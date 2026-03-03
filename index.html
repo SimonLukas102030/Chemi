@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemie Projekt: Sulfamidsäure</title>
+    <style>
+        :root {
+            --primary: #2980b9; /* Modernes Blau */
+            --secondary: #34495e; /* Dunkelblau für Akzente */
+            --accent-light: #5dade2; /* Helles Blau */
+            --bg: #ecf0f1; /* Heller Hintergrund */
+            --card: #ffffff;
+            --text: #2c3e50; /* Dunkler Text */
+            --line: #dbe2e9; /* Dezente Trennlinie */
+        }
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            display: flex;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        /* Sidebar Navigation */
+        nav {
+            width: 280px;
+            background: var(--secondary);
+            color: white;
+            padding: 30px 20px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        nav h2 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-light);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 12px;
+            margin-bottom: 25px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            margin: 10px 0;
+        }
+        nav ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: block;
+            padding: 6px 0;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: var(--accent-light);
+            padding-left: 8px;
+        }
+        .nav-tab {
+            margin-left: 20px;
+            font-size: 0.85rem;
+            color: #bdc3c7;
+        }
+        .nav-tab:hover {
+            color: var(--accent-light);
+        }
+
+        /* Main Content Area */
+        main {
+            margin-left: 280px; /* Offset for the fixed sidebar */
+            padding: 50px;
+            flex-grow: 1;
+            max-width: 900px;
+            box-sizing: border-box;
+        }
+        header {
+            background: var(--card);
+            padding: 35px 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+            border-left: 8px solid var(--primary);
+        }
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0;
+            line-height: 1.2;
+        }
+        header p {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-top: 10px;
+        }
+        
+        /* Section Styling */
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 50px;
+            border-bottom: 2px solid var(--line);
+            padding-bottom: 15px;
+        }
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-top: 35px;
+            margin-left: 20px; /* Indent for subsections */
+        }
+        .content-block {
+            margin-left: 50px; /* Indent for content under h3 */
+            margin-bottom: 30px;
+            background: var(--card);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            border-left: 4px solid var(--accent-light);
+        }
+        ul, ol {
+            padding-left: 25px;
+            margin: 15px 0;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        
+        /* Specific elements */
+        .formula-box {
+            font-family: 'Consolas', 'Monaco', monospace; /* Monospace for code/formula */
+            background: #eef4f7;
+            padding: 18px;
+            border-radius: 6px;
+            border: 1px solid var(--line);
+            display: block;
+            margin: 20px 0;
+            font-size: 1rem;
+            color: var(--text);
+            overflow-x: auto; /* For long formulas */
+        }
+        .star-wars-sketch {
+            font-family: 'Consolas', 'Monaco', monospace;
+            background-color: #000;
+            color: #00ff00; /* Green text */
+            padding: 30px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            white-space: pre; /* Preserves spaces and line breaks */
+            overflow-x: auto;
+            font-size: 0.9rem;
+            line-height: 1.1;
+            text-shadow: 0 0 5px #00cc00; /* Glow effect */
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid var(--line);
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            text-align: center;
+        }
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            nav { width: 220px; }
+            main { margin-left: 220px; padding: 30px; }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.6rem; }
+            h3 { font-size: 1.1rem; }
+            .content-block { margin-left: 30px; padding: 20px; }
+        }
+        @media (max-width: 768px) {
+            nav {
+                width: 100%;
+                height: auto;
+                position: relative;
+                box-shadow: none;
+                border-bottom: 1px solid var(--line);
+            }
+            nav h2 { text-align: center; border-bottom: none; padding-bottom: 0; }
+            nav ul { display: flex; flex-wrap: wrap; justify-content: center; }
+            nav ul li { margin: 5px 10px; }
+            nav ul li a, .nav-tab { font-size: 0.8rem; padding: 4px 0; margin-left: 0; }
+            main { margin-left: 0; padding: 20px; }
+            .content-block { margin-left: 0; }
+            h3 { margin-left: 0; }
+        }
+
+        /* Print Styles */
+        @media print {
+            nav { display: none; }
+            main { margin-left: 0; padding: 20px; }
+            header { box-shadow: none; border-left: none; }
+            .section-card { box-shadow: none; border: 1px solid #eee; break-inside: avoid; }
+            .star-wars-sketch { background-color: white; color: black; text-shadow: none; border: 1px dashed #ccc; padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <h2>Inhalt</h2>
+    <ul>
+        <li><a href="#steckbrief-main">Steckbrief:</a></li>
+        <li><a href="#zusammensetzung" class="nav-tab">Chemische Zusammensetzung</a></li>
+        <li><a href="#vorkommen" class="nav-tab">Vorkommen</a></li>
+        <li><a href="#herstellung" class="nav-tab">Herstellung / Gewinnung</a></li>
+        <li><a href="#verwendung" class="nav-tab">Verwendung</a></li>
+        <li><a href="#reaktionen-s" class="nav-tab">Chemische Reaktionen</a></li>
+        <li><a href="#besonderheiten" class="nav-tab">Besonderheiten / Interessantes</a></li>
+        <li style="margin-top: 20px;"><a href="#protokoll-main">Protokoll:</a></li>
+        <li><a href="#p-info" class="nav-tab">Info</a></li>
+        <li><a href="#p-mat" class="nav-tab">Materialien & Chemikalien</a></li>
+        <li><a href="#p-skizze" class="nav-tab">Skizze</a></li>
+        <li><a href="#p-durch" class="nav-tab">Durchführung</a></li>
+        <li><a href="#p-beob" class="nav-tab">Beobachtung</a></li>
+        <li><a href="#p-ausw" class="nav-tab">Auswertung</a></li>
+    </ul>
+</nav>
+
+<main>
+    <header>
+        <h1>Sulfamidsäure</h1>
+        <p>Ein detaillierter Steckbrief und Versuchsprotokoll</p>
+    </header>
+
+    <section id="steckbrief-main">
+        <h2>Steckbrief</h2>
+
+        <h3 id="zusammensetzung">1. Chemische Zusammensetzung</h3>
+        <div class="content-block">
+            <ul>
+                <li>Summenformel: H3NSO3</li>
+                <li>Struktur: Die Säure liegt im Festzustand als Zwitterion (Molekül mit getrennten Ladungen, nach außen neutral) vor. Das erklärt, warum sie bei Raumtemperatur ein Feststoff ist.</li>
+                <li>Molmasse: ca. 97,09 g/mol.</li>
+            </ul>
+        </div>
+
+        <h3 id="vorkommen">2. Vorkommen</h3>
+        <div class="content-block">
+            <ul>
+                <li>Natürliches Vorkommen: Kommt in der Natur nicht vor.</li>
+                <li>Stabilität: Aufgrund ihrer hohen Reaktivität mit Mineralien (wie Kalkstein) würde sie in der freien Natur sofort verschwinden.</li>
+            </ul>
+        </div>
+
+        <h3 id="herstellung">3. Herstellung / Gewinnung</h3>
+        <div class="content-block">
+            <ul>
+                <li>Industrielles Verfahren: Reaktion von Harnstoff (NH2)2 CO mit rauchender Schwefelsäure (Oleum = H2SO4 + SO3).</li>
+                <li>Prozess: Die Reaktion ist stark exotherm (setzt viel Hitze frei) und muss aktiv gekühlt werden, um Reaktion zu verhindern.</li>
+                <li>Abfallprodukt: Dabei entweicht Kohlenstoffdioxid CO2.</li>
+            </ul>
+        </div>
+
+        <h3 id="verwendung">4. Verwendung</h3>
+        <div class="content-block">
+            <ul>
+                <li>Entkalker: Hauptbestandteil in Kalkentfernern, da sie Kalk sehr effektiv löst, aber Metalle weniger stark angreift als z.B. Salzsäure.</li>
+                <li>Lebensmittel: Ausgangsstoff für die Herstellung von Süßstoffen (z. B. Acesulfam-K oder Cyclamat).</li>
+            </ul>
+        </div>
+
+        <h3 id="reaktionen-s">5. Chemische Reaktionen</h3>
+        <div class="content-block">
+            <p>Reaktion mit Kalk (Calciumcarbonat):</p>
+            <div class="formula-box">CaCO3 + 2 H2NSO3H —> Ca(H2NSO3)2 + H2O + CO2</div>
+            <p>Dabei entsteht Calcium-Amidosulfonat, Wasser und gasförmiges CO2.</p>
+            <p>Reaktion mit Wasser: In wässriger Lösung wandelt sie sich bei Erhitzen langsam in Ammoniumhydrogensulfat um.</p>
+        </div>
+
+        <h3 id="besonderheiten">6. Besonderheiten / Interessantes</h3>
+        <div class="content-block">
+            <ul>
+                <li>Aggregatzustand: Eine der wenigen anorganischen Säuren, die als Pulver gelagert werden können, was den Transport und die Mengen (z. B. in Portionen für Maschinen wie z.B. Kaffeemaschinen) vereinfacht.</li>
+                <li>Hautkontakt: Trotz ihrer Stärke ist sie bei Hautkontakt weniger aggressiv als andere Säuren, sollte aber trotzdem nur mit Handschuhen benutzt werden.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="protokoll-main">
+        <h2>Protokoll</h2>
+
+        <h3 id="p-info">1. Info (Versuchsziel)</h3>
+        <div class="content-block">
+            <p>Untersuchung der Reaktion von Sulfamidsäure mit Calciumcarbonat (Kalk). Es soll experimentell nachgewiesen werden, wie die Säure als Entkalker wirkt und welche Reaktionsprodukte dabei entstehen.</p>
+        </div>
+
+        <h3 id="p-mat">2. Materialien & Chemikalien</h3>
+        <div class="content-block">
+            <ul>
+                <li>Geräte: Reagenzglas, Reagenzglasständer, Spatellöffel, Becherglas (50 ml).</li>
+                <li>Chemikalien: Sulfamidsäure (als Pulver), Wasser (H2O), Kalkstück (z. B. Kreide oder Muschelschale).</li>
+            </ul>
+        </div>
+
+        <h3 id="p-skizze">3. Skizze</h3>
+        <div class="content-block">
+            <div class="star-wars-sketch">
+                &gt;&gt; START SIMULATION &lt;&lt;<br>
+                <br>
+                +-----------------+<br>
+                |  Reagenzglas    |<br>
+                |      o O        |<br>
+                |       o         |<br>
+                |     .-----------|<br>
+                |    /  ~ Lösung  |<br>
+                |   |   ~         |<br>
+                |   |   ~   O     |<br>
+                |   |   ~  / \    | &lt;-- Aufsteigende CO2-Blasen<br>
+                |   |   ~ o   o   |<br>
+                |   |   ~  \ /    |<br>
+                |   `-------------'<br>
+                |        [ Kalk ] &lt;-- Feststoff<br>
+                +-----------------+<br>
+                <br>
+                &gt;&gt; REAKTION AKTIV &lt;&lt;<br>
+            </div>
+            <p style="text-align: center; font-size: 0.85rem; color: #7f8c8d;">Schematische Darstellung der Reaktion im Reagenzglas.</p>
+        </div>
+
+        <h3 id="p-durch">4. Durchführung</h3>
+        <div class="content-block">
+            <ol>
+                <li>Ein Stück Kalk wird in das Reagenzglas gelegt.</li>
+                <li>Im Becherglas wird eine Spatenspitze Sulfamidsäure in ca. 20 ml Wasser gelöst, bis eine klare Lösung entsteht.</li>
+                <li>Die hergestellte Säurelösung wird langsam in das Reagenzglas über den Kalk gegossen.</li>
+            </ol>
+        </div>
+
+        <h3 id="p-beob">5. Beobachtung</h3>
+        <div class="content-block">
+            <ul>
+                <li>Sofort nach dem Kontakt beginnt die Flüssigkeit am Kalkstück stark zu sprudeln (Gasentwicklung).</li>
+                <li>Das Kalkstück wird im Verlauf der Reaktion kleiner und verschwindet schließlich ganz.</li>
+                <li>Die Lösung bleibt während und nach der Reaktion klar.</li>
+                <li>Das Reagenzglas erwärmt sich leicht.</li>
+            </ul>
+        </div>
+
+        <h3 id="p-ausw">6. Auswertung</h3>
+        <div class="content-block">
+            <p>Die Sulfamidsäure reagiert mit dem wasserunlöslichen Calciumcarbonat (Kalk). Dabei findet eine chemische Reaktion statt, bei der die Feststoffe in wasserlösliche Bestandteile umgewandelt werden. Das Sprudeln zeigt die Entstehung eines Gases an.</p>
+            <p>Wortgleichung:</p>
+            <div class="formula-box">Calciumcarbonat + Sulfamidsäure —> Calcium-Amidosulfonat + Wasser + Kohlenstoffdioxid</div>
+            <p>Reaktionsgleichung:</p>
+            <div class="formula-box">CaCO3 + 2 H2NSO3H —> Ca(H2NSO3)2 + H2O + CO2</div>
+            <p>Fazit:</p>
+            <p>Der Versuch bestätigt, dass Sulfamidsäure Kalk effektiv auflöst. Da das entstehende Salz (Calcium-Amidosulfonat) wasserlöslich ist, lässt sich der Kalk einfach wegspülen. Das macht sie zu einem idealen Wirkstoff für Entkalker.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Erstellt von: Simon Köper und Robin Böhm</p>
+        <p>Hinweis zur Erstellung: KI wurde ausschließlich für die Recherche von Informationen sowie für die Konvertierung der Texte in dieses HTML-Format genutzt. Es wurde kein von der KI generierter Text vollständig übernommen.</p>
+    </footer>
+</main>
+
+</body>
+</html>
