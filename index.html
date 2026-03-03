@@ -6,13 +6,13 @@
     <title>Chemie Projekt: Sulfamidsäure</title>
     <style>
         :root {
-            --primary: #2980b9; /* Modernes Blau */
-            --secondary: #34495e; /* Dunkelblau für Akzente */
-            --accent-light: #5dade2; /* Helles Blau */
-            --bg: #ecf0f1; /* Heller Hintergrund */
+            --primary: #2980b9; 
+            --secondary: #34495e; 
+            --accent-light: #5dade2; 
+            --bg: #ecf0f1; 
             --card: #ffffff;
-            --text: #2c3e50; /* Dunkler Text */
-            --line: #dbe2e9; /* Dezente Trennlinie */
+            --text: #2c3e50; 
+            --line: #dbe2e9; 
         }
         body {
             font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
@@ -23,7 +23,6 @@
             line-height: 1.6;
             min-height: 100vh;
         }
-        /* Sidebar Navigation */
         nav {
             width: 280px;
             background: var(--secondary);
@@ -74,10 +73,8 @@
         .nav-tab:hover {
             color: var(--accent-light);
         }
-
-        /* Main Content Area */
         main {
-            margin-left: 280px; /* Offset for the fixed sidebar */
+            margin-left: 280px; 
             padding: 50px;
             flex-grow: 1;
             max-width: 900px;
@@ -103,8 +100,6 @@
             color: var(--secondary);
             margin-top: 10px;
         }
-        
-        /* Section Styling */
         h2 {
             font-size: 1.8rem;
             font-weight: 600;
@@ -118,10 +113,10 @@
             font-weight: 600;
             color: var(--secondary);
             margin-top: 35px;
-            margin-left: 20px; /* Indent for subsections */
+            margin-left: 20px;
         }
         .content-block {
-            margin-left: 50px; /* Indent for content under h3 */
+            margin-left: 50px; 
             margin-bottom: 30px;
             background: var(--card);
             padding: 25px;
@@ -129,17 +124,8 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.03);
             border-left: 4px solid var(--accent-light);
         }
-        ul, ol {
-            padding-left: 25px;
-            margin: 15px 0;
-        }
-        li {
-            margin-bottom: 8px;
-        }
-        
-        /* Specific elements */
         .formula-box {
-            font-family: 'Consolas', 'Monaco', monospace; /* Monospace for code/formula */
+            font-family: 'Consolas', 'Monaco', monospace; 
             background: #eef4f7;
             padding: 18px;
             border-radius: 6px;
@@ -148,23 +134,64 @@
             margin: 20px 0;
             font-size: 1rem;
             color: var(--text);
-            overflow-x: auto; /* For long formulas */
+            overflow-x: auto; 
         }
         .star-wars-sketch {
             font-family: 'Consolas', 'Monaco', monospace;
             background-color: #000;
-            color: #00ff00; /* Green text */
+            color: #00ff00; 
             padding: 30px 20px;
             margin: 20px 0;
             border-radius: 8px;
-            white-space: pre; /* Preserves spaces and line breaks */
+            white-space: pre; 
             overflow-x: auto;
             font-size: 0.9rem;
             line-height: 1.1;
-            text-shadow: 0 0 5px #00cc00; /* Glow effect */
+            text-shadow: 0 0 5px #00cc00; 
         }
 
-        /* Footer */
+        /* Calculator Styles */
+        .calc-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .calc-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--line);
+        }
+        .calc-card input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        .calc-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        .calc-btn:hover {
+            background-color: var(--secondary);
+        }
+        .calc-result {
+            font-weight: bold;
+            color: var(--primary);
+            margin-top: 15px;
+            text-align: center;
+        }
+
         footer {
             margin-top: 80px;
             padding-top: 30px;
@@ -173,43 +200,16 @@
             color: #7f8c8d;
             text-align: center;
         }
-        footer p {
-            margin-bottom: 8px;
-        }
 
-        /* Responsive Design */
         @media (max-width: 900px) {
             nav { width: 220px; }
             main { margin-left: 220px; padding: 30px; }
-            h1 { font-size: 2.2rem; }
-            h2 { font-size: 1.6rem; }
-            h3 { font-size: 1.1rem; }
-            .content-block { margin-left: 30px; padding: 20px; }
+            .calc-container { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
-            nav {
-                width: 100%;
-                height: auto;
-                position: relative;
-                box-shadow: none;
-                border-bottom: 1px solid var(--line);
-            }
-            nav h2 { text-align: center; border-bottom: none; padding-bottom: 0; }
+            nav { width: 100%; height: auto; position: relative; }
             nav ul { display: flex; flex-wrap: wrap; justify-content: center; }
-            nav ul li { margin: 5px 10px; }
-            nav ul li a, .nav-tab { font-size: 0.8rem; padding: 4px 0; margin-left: 0; }
             main { margin-left: 0; padding: 20px; }
-            .content-block { margin-left: 0; }
-            h3 { margin-left: 0; }
-        }
-
-        /* Print Styles */
-        @media print {
-            nav { display: none; }
-            main { margin-left: 0; padding: 20px; }
-            header { box-shadow: none; border-left: none; }
-            .section-card { box-shadow: none; border: 1px solid #eee; break-inside: avoid; }
-            .star-wars-sketch { background-color: white; color: black; text-shadow: none; border: 1px dashed #ccc; padding: 10px; }
         }
     </style>
 </head>
@@ -232,6 +232,7 @@
         <li><a href="#p-durch" class="nav-tab">Durchführung</a></li>
         <li><a href="#p-beob" class="nav-tab">Beobachtung</a></li>
         <li><a href="#p-ausw" class="nav-tab">Auswertung</a></li>
+        <li><a href="#calculator" class="nav-tab">Mengen-Rechner</a></li>
     </ul>
 </nav>
 
@@ -243,7 +244,6 @@
 
     <section id="steckbrief-main">
         <h2>Steckbrief</h2>
-
         <h3 id="zusammensetzung">1. Chemische Zusammensetzung</h3>
         <div class="content-block">
             <ul>
@@ -252,7 +252,6 @@
                 <li>Molmasse: ca. 97,09 g/mol.</li>
             </ul>
         </div>
-
         <h3 id="vorkommen">2. Vorkommen</h3>
         <div class="content-block">
             <ul>
@@ -260,7 +259,6 @@
                 <li>Stabilität: Aufgrund ihrer hohen Reaktivität mit Mineralien (wie Kalkstein) würde sie in der freien Natur sofort verschwinden.</li>
             </ul>
         </div>
-
         <h3 id="herstellung">3. Herstellung / Gewinnung</h3>
         <div class="content-block">
             <ul>
@@ -269,7 +267,6 @@
                 <li>Abfallprodukt: Dabei entweicht Kohlenstoffdioxid CO2.</li>
             </ul>
         </div>
-
         <h3 id="verwendung">4. Verwendung</h3>
         <div class="content-block">
             <ul>
@@ -277,7 +274,6 @@
                 <li>Lebensmittel: Ausgangsstoff für die Herstellung von Süßstoffen (z. B. Acesulfam-K oder Cyclamat).</li>
             </ul>
         </div>
-
         <h3 id="reaktionen-s">5. Chemische Reaktionen</h3>
         <div class="content-block">
             <p>Reaktion mit Kalk (Calciumcarbonat):</p>
@@ -285,7 +281,6 @@
             <p>Dabei entsteht Calcium-Amidosulfonat, Wasser und gasförmiges CO2.</p>
             <p>Reaktion mit Wasser: In wässriger Lösung wandelt sie sich bei Erhitzen langsam in Ammoniumhydrogensulfat um.</p>
         </div>
-
         <h3 id="besonderheiten">6. Besonderheiten / Interessantes</h3>
         <div class="content-block">
             <ul>
@@ -297,12 +292,10 @@
 
     <section id="protokoll-main">
         <h2>Protokoll</h2>
-
         <h3 id="p-info">1. Info (Versuchsziel)</h3>
         <div class="content-block">
             <p>Untersuchung der Reaktion von Sulfamidsäure mit Calciumcarbonat (Kalk). Es soll experimentell nachgewiesen werden, wie die Säure als Entkalker wirkt und welche Reaktionsprodukte dabei entstehen.</p>
         </div>
-
         <h3 id="p-mat">2. Materialien & Chemikalien</h3>
         <div class="content-block">
             <ul>
@@ -310,7 +303,6 @@
                 <li>Chemikalien: Sulfamidsäure (als Pulver), Wasser (H2O), Kalkstück (z. B. Kreide oder Muschelschale).</li>
             </ul>
         </div>
-
         <h3 id="p-skizze">3. Skizze</h3>
         <div class="content-block">
             <div class="star-wars-sketch">
@@ -320,22 +312,20 @@
                 |  Reagenzglas    |<br>
                 |      o O        |<br>
                 |       o         |<br>
-                |     .-----------|<br>
-                |    /  ~ Lösung  |<br>
-                |   |   ~         |<br>
-                |   |   ~   O     |<br>
-                |   |   ~  / \    | &lt;-- Aufsteigende CO2-Blasen<br>
-                |   |   ~ o   o   |<br>
-                |   |   ~  \ /    |<br>
-                |   `-------------'<br>
+                |    .-----------|<br>
+                |   /  ~ Lösung  |<br>
+                |  |   ~         |<br>
+                |  |   ~   O     |<br>
+                |  |   ~  / \    | &lt;-- Aufsteigende CO2-Blasen<br>
+                |  |   ~ o   o   |<br>
+                |  |   ~  \ /    |<br>
+                |  `-------------'<br>
                 |        [ Kalk ] &lt;-- Feststoff<br>
                 +-----------------+<br>
                 <br>
                 &gt;&gt; REAKTION AKTIV &lt;&lt;<br>
             </div>
-            <p style="text-align: center; font-size: 0.85rem; color: #7f8c8d;">Schematische Darstellung der Reaktion im Reagenzglas.</p>
         </div>
-
         <h3 id="p-durch">4. Durchführung</h3>
         <div class="content-block">
             <ol>
@@ -344,7 +334,6 @@
                 <li>Die hergestellte Säurelösung wird langsam in das Reagenzglas über den Kalk gegossen.</li>
             </ol>
         </div>
-
         <h3 id="p-beob">5. Beobachtung</h3>
         <div class="content-block">
             <ul>
@@ -354,7 +343,6 @@
                 <li>Das Reagenzglas erwärmt sich leicht.</li>
             </ul>
         </div>
-
         <h3 id="p-ausw">6. Auswertung</h3>
         <div class="content-block">
             <p>Die Sulfamidsäure reagiert mit dem wasserunlöslichen Calciumcarbonat (Kalk). Dabei findet eine chemische Reaktion statt, bei der die Feststoffe in wasserlösliche Bestandteile umgewandelt werden. Das Sprudeln zeigt die Entstehung eines Gases an.</p>
@@ -362,8 +350,30 @@
             <div class="formula-box">Calciumcarbonat + Sulfamidsäure —> Calcium-Amidosulfonat + Wasser + Kohlenstoffdioxid</div>
             <p>Reaktionsgleichung:</p>
             <div class="formula-box">CaCO3 + 2 H2NSO3H —> Ca(H2NSO3)2 + H2O + CO2</div>
-            <p>Fazit:</p>
-            <p>Der Versuch bestätigt, dass Sulfamidsäure Kalk effektiv auflöst. Da das entstehende Salz (Calcium-Amidosulfonat) wasserlöslich ist, lässt sich der Kalk einfach wegspülen. Das macht sie zu einem idealen Wirkstoff für Entkalker.</p>
+        </div>
+    </section>
+
+    <section id="calculator">
+        <h2>Mengen-Rechner</h2>
+        <div class="content-block">
+            <div class="calc-container">
+                <div class="calc-card">
+                    <label>Bariumchlorid-Dihydrat (g):</label>
+                    <input type="number" id="bacl" value="10">
+                    <label>Konzentration Entkalker (%):</label>
+                    <input type="number" id="conc1" value="15">
+                    <button class="calc-btn" onclick="calcBaCl()">Berechnen</button>
+                    <div class="calc-result" id="res1">Ergebnis ausstehend</div>
+                </div>
+                <div class="calc-card">
+                    <label>Menge Kalk (g):</label>
+                    <input type="number" id="kalk" value="5">
+                    <label>Konzentration Entkalker (%):</label>
+                    <input type="number" id="conc2" value="15">
+                    <button class="calc-btn" onclick="calcKalk()">Berechnen</button>
+                    <div class="calc-result" id="res2">Ergebnis ausstehend</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -372,6 +382,23 @@
         <p>Hinweis zur Erstellung: KI wurde ausschließlich für die Recherche von Informationen sowie für die Konvertierung der Texte in dieses HTML-Format genutzt. Es wurde kein von der KI generierter Text vollständig übernommen.</p>
     </footer>
 </main>
+
+<script>
+    function calcBaCl() {
+        const bG = document.getElementById('bacl').value;
+        const bC = document.getElementById('conc1').value;
+        if(bG > 0 && bC > 0) {
+            document.getElementById('res1').innerText = "Benötigt: " + (bG * 0.79 / (bC/100)).toFixed(2) + " ml";
+        }
+    }
+    function calcKalk() {
+        const kG = document.getElementById('kalk').value;
+        const kC = document.getElementById('conc2').value;
+        if(kG > 0 && kC > 0) {
+            document.getElementById('res2').innerText = "Benötigt: " + (kG * 1.94 / (kC/100)).toFixed(2) + " ml";
+        }
+    }
+</script>
 
 </body>
 </html>
