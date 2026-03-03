@@ -137,17 +137,21 @@
             overflow-x: auto; 
         }
         .star-wars-sketch {
-            font-family: 'Consolas', 'Monaco', monospace;
-            background-color: #000;
-            color: #00ff00; 
-            padding: 30px 20px;
+            background-color: transparent;
+            padding: 0;
             margin: 20px 0;
+            border-radius: 0;
+            white-space: normal; 
+            overflow-x: visible;
+            box-shadow: none;
+            text-align: center;
+        }
+        .star-wars-sketch img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid var(--line);
             border-radius: 8px;
-            white-space: pre; 
-            overflow-x: auto;
-            font-size: 0.9rem;
-            line-height: 1.1;
-            text-shadow: 0 0 5px #00cc00; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         /* Calculator Styles */
@@ -306,24 +310,7 @@
         <h3 id="p-skizze">3. Skizze</h3>
         <div class="content-block">
             <div class="star-wars-sketch">
-                &gt;&gt; START SIMULATION &lt;&lt;<br>
-                <br>
-                +-----------------+<br>
-                |  Reagenzglas    |<br>
-                |      o O        |<br>
-                |       o         |<br>
-                |    .-----------|<br>
-                |   /  ~ Lösung  |<br>
-                |  |   ~         |<br>
-                |  |   ~   O     |<br>
-                |  |   ~  / \    | &lt;-- Aufsteigende CO2-Blasen<br>
-                |  |   ~ o   o   |<br>
-                |  |   ~  \ /    |<br>
-                |  `-------------'<br>
-                |        [ Kalk ] &lt;-- Feststoff<br>
-                +-----------------+<br>
-                <br>
-                &gt;&gt; REAKTION AKTIV &lt;&lt;<br>
+                <img src="skitzze.png" alt="Skizze der Versuchsreaktion" title="Reaktionsskizze">
             </div>
         </div>
         <h3 id="p-durch">4. Durchführung</h3>
@@ -385,17 +372,21 @@
 
 <script>
     function calcBaCl() {
-        const bG = document.getElementById('bacl').value;
-        const bC = document.getElementById('conc1').value;
+        const bG = parseFloat(document.getElementById('bacl').value);
+        const bC = parseFloat(document.getElementById('conc1').value);
         if(bG > 0 && bC > 0) {
-            document.getElementById('res1').innerText = "Benötigt: " + (bG * 0.79 / (bC/100)).toFixed(2) + " ml";
+            // Berechnung: (Barium-Menge * 0.79) / (Konzentration / 100) -> Molmassen-Faktor für Sulfamidsäure-Reaktion
+            const mlRequired = (bG * 0.79 / (bC/100)).toFixed(2);
+            document.getElementById('res1').innerText = "Benötigt: " + mlRequired + " ml";
         }
     }
     function calcKalk() {
-        const kG = document.getElementById('kalk').value;
-        const kC = document.getElementById('conc2').value;
+        const kG = parseFloat(document.getElementById('kalk').value);
+        const kC = parseFloat(document.getElementById('conc2').value;
         if(kG > 0 && kC > 0) {
-            document.getElementById('res2').innerText = "Benötigt: " + (kG * 1.94 / (kC/100)).toFixed(2) + " ml";
+            // Berechnung: (Kalk-Menge * 1.94) / (Konzentration / 100) -> Molmassen-Faktor für Kalk-Lösung
+            const mlRequiredKalk = (kG * 1.94 / (kC/100)).toFixed(2);
+            document.getElementById('res2').innerText = "Benötigt: " + mlRequiredKalk + " ml";
         }
     }
 </script>
